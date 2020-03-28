@@ -1,19 +1,34 @@
+import java.util.Scanner;
+
 public class Sudoku {
     private int[][] matrix;
  
     public Sudoku(int[][] matrix) {
         this.matrix = matrix;
     }
- 
+    
     public static void main(String[] args) {
-        int[][] sudoku = {
-                {0,0,3},
-                {0,0,2},
-                {0,0,1}};
+    	Scanner scan = new Scanner(System.in);        
+		int n=3;
+		int[][]sudoku=new int[n][n];       
+		System.out.println("输入三宮格：");        
+		for(int i=0;i<n;i++){            
+			for(int j=0;j<n;j++){                
+				sudoku[i][j]=scan.nextInt();        
+				}        
+			}        
+		System.out.println("你输入的数组为：");        
+		for(int i=0;i<n;i++){            
+			for(int j=0;j<n;j++){                
+				System.out.print(sudoku[i][j]+" ");                
+				if(j==n-1)                    
+					System.out.println();          
+				}      
+			}   
         Sudoku s = new Sudoku(sudoku);
         s.backTrace(0, 0);
     }
- 
+   
     private void backTrace(int i, int j) {
         if (i == 2 && j == 3) {
             System.out.println("3宫格");
